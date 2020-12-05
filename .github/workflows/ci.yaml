@@ -1,5 +1,10 @@
-name: Build & Deploy
-on: [push]
+name: Build, Deploy & Release
+on:
+  push:
+    branches:
+      - 'main'
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,3 +24,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+      - name: Test for me
+        run: echo ${{ github.ref }}
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body_path: './releases/${{ github.ref }}.md'
+          draft: false
+          prerelease: false
