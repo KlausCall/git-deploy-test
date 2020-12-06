@@ -8,6 +8,7 @@ function App() {
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>It Works!</p>
+        <p>Version is {process.env.REACT_APP_VERSION}</p>
         <a
           className='App-link'
           href='https://reactjs.org'

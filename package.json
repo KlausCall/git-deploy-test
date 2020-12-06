@@ -20,6 +20,7 @@
   },
   "scripts": {
     "preversion": "git-branch-is main && echo Preversion checks passed.",
+    "postversion": "git push && git push --tags",
     "start": "react-scripts start",
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test",
