@@ -19,7 +19,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "preversion": "git-branch-is release && echo Preversion checks passed.",
+    "preversion": "git-branch-is main && echo Preversion checks passed.",
     "start": "react-scripts start",
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test",
